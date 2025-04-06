@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Tables - Basic Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <div class="flex-grow-1">
+      <h4 class="fw-bold py-3"><span class="text-muted fw-light"></span>Employee Details</h4>
+
+      <div class="card">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-header">Employee Details</h5>
+
+          <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
+            Add Employee Details
+          </button>
+        </div>
+        <div class="table-responsive text-nowrap">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Position</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <strong>Jane Smith</strong>
+                      <p class="text-muted mb-0">jane.smith@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Sales Manager</td>
+                <td>+1 (555) 123-4567</td>
+                <td><span class="badge bg-label-success me-1">Active</span></td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <strong>Mark Lee</strong>
+                      <p class="text-muted mb-0">mark.lee@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Technician</td>
+                <td>+1 (555) 987-6543</td>
+                <td><span class="badge bg-label-warning me-1">On Leave</span></td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <strong>Emma Davis</strong>
+                      <p class="text-muted mb-0">emma.davis@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Finance Specialist</td>
+                <td>+1 (555) 456-7890</td>
+                <td><span class="badge bg-label-danger me-1">Inactive</span></td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCenterTitle">Employee Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="employeeForm">
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label for="employeeName" class="form-label">Employee Name</label>
+                  <input
+                    type="text"
+                    id="employeeName"
+                    class="form-control"
+                    placeholder="Enter Employee Name"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label for="employeePosition" class="form-label">Position</label>
+                  <input type="text" id="employeePosition" class="form-control" placeholder="Enter Position" required />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label for="employeeContact" class="form-label">Contact</label>
+                  <input
+                    type="text"
+                    id="employeeContact"
+                    class="form-control"
+                    placeholder="+1 (555) 123-4567"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label for="employeeStatus" class="form-label">Status</label>
+                  <select id="employeeStatus" class="form-select" required>
+                    <option value="Active">Active</option>
+                    <option value="On Leave">On Leave</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="employeeForm">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>

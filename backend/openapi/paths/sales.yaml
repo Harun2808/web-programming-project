@@ -1,0 +1,89 @@
+/sales:
+  get:
+    summary: Get all sales
+    tags:
+      - Sales
+    responses:
+      '200':
+        description: A list of sales records
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Sale'
+
+  post:
+    summary: Create a new sale
+    tags:
+      - Sales
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SaleInput'
+    responses:
+      '201':
+        description: Sale created successfully
+      '400':
+        description: Invalid input
+
+/sales/{id}:
+  get:
+    summary: Get a sale by ID
+    tags:
+      - Sales
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Sale record found
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sale'
+      '404':
+        description: Sale not found
+
+  put:
+    summary: Update a sale by ID
+    tags:
+      - Sales
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SaleInput'
+    responses:
+      '200':
+        description: Sale updated successfully
+      '404':
+        description: Sale not found
+
+  delete:
+    summary: Delete a sale by ID
+    tags:
+      - Sales
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Sale deleted successfully
+      '404':
+        description: Sale not found

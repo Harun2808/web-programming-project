@@ -72,7 +72,13 @@
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="card-header">Customers Details</h5>
 
-          <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#customerModal">
+          <button
+            type="button"
+            class="btn btn-primary me-3"
+            data-bs-toggle="modal"
+            id="addCustomerBtn"
+            data-bs-target="#customerModal"
+          >
             Add Customer Details
           </button>
         </div>
@@ -80,88 +86,14 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Created At</th>
+
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody class="table-border-bottom-0">
-              <tr>
-                <td>1</td>
-                <td>John Doe</td>
-                <td>johndoe@example.com</td>
-                <td>+123456789</td>
-                <td>2025-03-28 12:30:45</td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jane Smith</td>
-                <td>janesmith@example.com</td>
-                <td>+987654321</td>
-                <td>2025-03-27 14:15:22</td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Robert Johnson</td>
-                <td>robertjohnson@example.com</td>
-                <td>+192837465</td>
-                <td>2025-03-26 16:40:10</td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Emily Davis</td>
-                <td>emilydavis@example.com</td>
-                <td>+5647382910</td>
-                <td>2025-03-25 09:50:00</td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                      <a class="dropdown-item" href="javascript:void(0);"> <i class="bx bx-trash me-1"></i> Delete </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+            <tbody class="table-border-bottom-0" id="customersTableBody"></tbody>
           </table>
         </div>
       </div>
@@ -176,30 +108,20 @@
           </div>
           <div class="modal-body">
             <form id="customerForm">
-              <!-- ID (Readonly) -->
-              <div class="mb-3">
-                <label for="customerId" class="form-label">Customer ID</label>
-                <input type="text" class="form-control" id="customerId" name="customerId" readonly />
-              </div>
               <!-- Name -->
               <div class="mb-3">
                 <label for="customerName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="customerName" name="customerName" required />
+                <input type="text" class="form-control" id="customerName" name="name" required />
               </div>
               <!-- Email -->
               <div class="mb-3">
                 <label for="customerEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="customerEmail" name="customerEmail" required />
+                <input type="email" class="form-control" id="customerEmail" name="email" required />
               </div>
               <!-- Phone -->
               <div class="mb-3">
                 <label for="customerPhone" class="form-label">Phone</label>
-                <input type="tel" class="form-control" id="customerPhone" name="customerPhone" required />
-              </div>
-              <!-- Created At (Readonly) -->
-              <div class="mb-3">
-                <label for="customerCreatedAt" class="form-label">Created At</label>
-                <input type="text" class="form-control" id="customerCreatedAt" name="customerCreatedAt" readonly />
+                <input type="tel" class="form-control" id="customerPhone" name="phone" required />
               </div>
             </form>
           </div>

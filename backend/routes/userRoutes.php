@@ -44,3 +44,23 @@ Flight::route('DELETE /users/@id', function ($id) {
     $deleted = $service->deleteUser($id);
     Flight::json(['success' => $deleted]);
 });
+Flight::route('POST /register', function () {
+    $data = Flight::request()->data->getData();
+    $name = $data['name'] ?? '';
+    $email = $data['email'] ?? '';
+    $password = $data['password'] ?? '';
+    $role = $data['role'] ?? '';
+
+    if (!$name || !$email || !$password) {
+        Flight::json(['success' => false, 'message' => 'Missing required fields'], 400);
+        return;
+    }
+
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $service = new UserService();
+    $created = $service->createUser($name, $email, $hashedPassword, $role);
+
+    Flight::json(['success' => $created]);
+});
+

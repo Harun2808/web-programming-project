@@ -138,14 +138,14 @@
               <h4 class="mb-2">Welcome to MotoHub! 👋</h4>
               <p class="mb-4">Please sign-in to your account</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="loginForm" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
+                    name="email"
                     placeholder="Enter your email or username"
                     autofocus
                   />
@@ -168,13 +168,16 @@
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                  <div id="error" class="error-message"></div>
                 </div>
+
                 <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
                     <label class="form-check-label" for="remember-me"> Remember Me </label>
                   </div>
                 </div>
+
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                 </div>
@@ -214,7 +217,7 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
+    <!-- <script>
       document.getElementById('formAuthentication').addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -232,6 +235,54 @@
         setTimeout(() => {
           window.location.href = '../html/index.html';
         }, 1000);
+      });
+    </script> -->
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const errorDiv = document.getElementById('error');
+        errorDiv.textContent = ''; // Clear previous errors
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!email || !password) {
+          errorDiv.textContent = 'Please fill in both fields.';
+          return;
+        }
+
+        try {
+          const response = await fetch('http://localhost:8000/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+              // Add CSRF or auth headers here if needed
+            },
+            body: JSON.stringify({ email, password })
+          });
+
+          if (!response.ok) {
+            // Get error message from backend
+            const errorData = await response.json();
+            errorDiv.textContent = errorData.error || 'Login failed. Please check your credentials.';
+            return;
+          }
+
+          const data = await response.json();
+
+          // Save token to localStorage or cookie
+          localStorage.setItem('token', data.token);
+
+          // Optionally save user info
+          localStorage.setItem('user', JSON.stringify(data.user));
+
+          // Redirect after successful login
+          window.location.href = 'index.html'; // Change to your logged-in landing page
+        } catch (err) {
+          console.error('Fetch error:', err);
+          errorDiv.textContent = 'An error occurred. Please try again later.';
+        }
       });
     </script>
   </body>

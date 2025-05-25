@@ -137,15 +137,15 @@
               <!-- /Logo -->
               <h4 class="mb-2">Adventure starts here 🚀</h4>
               <p class="mb-4">Connecting you to your dream ride.</p>
-
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <div id="message" class="text-center mt-2"></div>
+              <form id="registerForm" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
+                  <label for="name" class="form-label">Username</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="username"
-                    name="username"
+                    id="name"
+                    name="name"
                     placeholder="Enter your username"
                     autofocus
                   />
@@ -215,24 +215,33 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
     <script>
-      document.getElementById('formAuthentication').addEventListener('submit', function (e) {
+      document.getElementById('registerForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
 
-        // Basic validation
-        if (!email || !password) {
-          alert('Please enter both email and password');
-          return;
-        }
+        const response = await fetch('http://localhost:8000/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, password })
+        });
 
-        // Here you would typically send to server for authentication
-        // For now, we'll just redirect after 1 second
-        setTimeout(() => {
-          window.location.href = '../html/index.html';
-        }, 1000);
+        const result = await response.json();
+        const messageDiv = document.getElementById('message');
+
+        if (response.ok) {
+          messageDiv.innerHTML = `<span class="text-success">${result.message}</span>`;
+          document.getElementById('registerForm').reset();
+          window.location.href = 'index.html';
+        } else {
+          messageDiv.innerHTML = `<span class="text-danger">${result.error}</span>`;
+        }
       });
     </script>
   </body>

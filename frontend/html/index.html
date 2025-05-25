@@ -172,8 +172,14 @@
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div>Customers</div>
               </a>
+            </li> 
+            <li class="menu-item" id="userTab">
+              <a href="#users" class="menu-link" data-spa-link>
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div>Users</div>
+              </a>
             </li>
-            <li class="menu-header small text-uppercase">
+            <!-- <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pages</span>
             </li>
             <li class="menu-item">
@@ -190,7 +196,7 @@
                     </a>
                   </li>
               </ul>
-            </li>
+            </li> -->
 
             
            
@@ -258,7 +264,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a id="logoutBtn" class="dropdown-item" href="auth-login-basic.html">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -297,7 +303,7 @@
     <script src="../assets/vendor/js/bootstrap.js"></script>
     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <!-- After all other scripts -->
-    <script src="../assets/js/spa.js"></script>
+    <script src="../js/spa.js"></script>
     <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
@@ -312,5 +318,16 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      const user = JSON.parse(localStorage.getItem('user'))
+  if (user?.role === 'sales') {
+    const addBtn = document.getElementById('userTab')
+    if (addBtn) addBtn.style.display = 'none'
+  }
+    
+    
+    logoutBtn.addEventListener('click', () => {
+  localStorage.clear(); // Clears all localStorage data
+});</script>
   </body>
 </html>

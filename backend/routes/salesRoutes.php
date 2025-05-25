@@ -2,16 +2,19 @@
 require_once __DIR__ . '/../services/SalesService.php';
 
 Flight::route('GET /sales', function () {
+    //    AuthMiddleware::authenticate();
     $service = new SalesService();
     Flight::json($service->getAll());
 });
 
 Flight::route('GET /sales/@id', function ($id) {
+    // AuthMiddleware::authenticate();
     $service = new SalesService();
     Flight::json($service->getById($id));
 });
 
 Flight::route('POST /sales', function () {
+        // AuthMiddleware::authenticate();
     $data = Flight::request()->data->getData();
     $service = new SalesService();
     Flight::json($service->create(
@@ -24,6 +27,7 @@ Flight::route('POST /sales', function () {
 });
 
 Flight::route('PUT /sales/@id', function ($id) {
+        // AuthMiddleware::authenticate();
     $data = Flight::request()->data->getData();
     $service = new SalesService();
     Flight::json($service->update(
@@ -37,6 +41,7 @@ Flight::route('PUT /sales/@id', function ($id) {
 });
 
 Flight::route('DELETE /sales/@id', function ($id) {
+        // AuthMiddleware::authenticate();
     $service = new SalesService();
     Flight::json($service->delete($id));
 });

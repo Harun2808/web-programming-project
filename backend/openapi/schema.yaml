@@ -1,0 +1,160 @@
+components:
+  schemas:
+    # User Schema
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier for the user
+        name:
+          type: string
+          description: The user's name
+        email:
+          type: string
+          format: email
+          description: The user's email address
+        password:
+          type: string
+          description: The user's password (hashed)
+        role:
+          type: string
+          description: The user's role (e.g., admin, customer)
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time when the user was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time when the user was last updated
+
+    # User Input Schema (for creating/updating users)
+    UserInput:
+      type: object
+      required:
+        - name
+        - email
+        - password
+        - role
+      properties:
+        name:
+          type: string
+          description: The user's name
+        email:
+          type: string
+          format: email
+          description: The user's email address
+        password:
+          type: string
+          description: The user's password (plain text, will be hashed on server-side)
+        role:
+          type: string
+          description: The user's role (e.g., admin, customer)
+
+    # Car Schema
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier for the car
+        make:
+          type: string
+          description: The make (brand) of the car (e.g., Ford, Toyota)
+        model:
+          type: string
+          description: The model of the car (e.g., Focus, Corolla)
+        year:
+          type: integer
+          description: The manufacturing year of the car
+        price:
+          type: number
+          format: float
+          description: The price of the car
+        color:
+          type: string
+          description: The color of the car
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time when the car was added
+
+    # Sale Schema
+    Sale:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier for the sale
+        car_id:
+          type: integer
+          description: The ID of the car being sold
+        customer_id:
+          type: integer
+          description: The ID of the customer buying the car
+        employee_id:
+          type: integer
+          description: The ID of the employee handling the sale
+        sale_date:
+          type: string
+          format: date-time
+          description: The date and time of the sale
+        price:
+          type: number
+          format: float
+          description: The sale price of the car
+
+    # Sale Input Schema (for creating a sale)
+    SaleInput:
+      type: object
+      required:
+        - car_id
+        - customer_id
+        - employee_id
+        - sale_date
+        - price
+      properties:
+        car_id:
+          type: integer
+          description: The ID of the car being sold
+        customer_id:
+          type: integer
+          description: The ID of the customer buying the car
+        employee_id:
+          type: integer
+          description: The ID of the employee handling the sale
+        sale_date:
+          type: string
+          format: date-time
+          description: The date and time of the sale
+        price:
+          type: number
+          format: float
+          description: The sale price of the car
+
+    # Error Response Schema
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A description of the error
+        code:
+          type: integer
+          description: The HTTP status code for the error
+        details:
+          type: string
+          description: Additional details about the error (optional)
+
+    # Success Response Schema
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates if the operation was successful
+        message:
+          type: string
+          description: A success message or additional information (optional)
+

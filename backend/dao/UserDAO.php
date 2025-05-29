@@ -34,5 +34,16 @@ class UserDAO {
         $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
         return $stmt->execute([$id]);
     }
+    
+    public function findByEmail($email) {
+    $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function register($name, $email, $hashedPassword, $role) {
+    $stmt = $this->pdo->prepare("INSERT INTO users (name, email, password, role, created_at) VALUES (?, ?, ?, ?, NOW())");
+    return $stmt->execute([$name, $email, $hashedPassword, $role]);
+    }
 }
 ?>

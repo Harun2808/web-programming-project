@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  title: Car API
+  description: CRUD API for managing cars
+  version: 1.0.0
+
+servers:
+  - url: http://localhost
+
+paths:
+  /cars:
+    get:
+      summary: Get all cars
+      tags: [Cars]
+      responses:
+        '200':
+          description: A list of all cars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+
+    post:
+      summary: Add a new car
+      tags: [Cars]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarInput'
+      responses:
+        '201':
+          description: Car created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+
+  /cars/{id}:
+    get:
+      summary: Get a car by ID
+      tags: [Cars]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Car found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '404':
+          description: Car not found
+
+    put:
+      summary: Update a car by ID
+      tags: [Cars]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarInput'
+      responses:
+        '200':
+          description: Car updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+
+    delete:
+      summary: Delete a car by ID
+      tags: [Cars]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Car deleted
+        '404':
+          description: Car not found
+
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer
+        price:
+          type: number
+          format: float
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    CarInput:
+      type: object
+      required:
+        - make
+        - model
+        - year
+        - price
+        - status
+      properties:
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer
+        price:
+          type: number
+          format: float
+        status:
+          type: string
